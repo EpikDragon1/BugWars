@@ -107,9 +107,10 @@ window.addEventListener("resize", resizeMatrix);
 setInterval(drawMatrix, 50);   // ~20 fps — не грузит
 
 // ============================================================
-//  ФОРМА ОБРАТНОЙ СВЯЗИ
+//  ФОРМА ОБРАТНОЙ СВЯЗИ (Web3Forms)
 // ============================================================
-// Отправляем через fetch, чтобы не перезагружать страницу.
+// Web3Forms — бесплатный сервис, который принимает данные
+// с формы и отправляет их на email. Работает без сервера.
 
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("formSuccess");
@@ -120,31 +121,31 @@ form.addEventListener("submit", async (e) => {
     const formData = new FormData(form);
 
     try {
-        // Netlify Forms: отправляем данные на / — они попадут в панель.
-        await fetch("/", {
+        // Отправляем на сервер Web3Forms.
+        const res = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
+            body: formData,
         });
 
-        // Показываем сообщение об успехе.
-        successMsg.style.display = "block";
-        form.reset();
+        const data = await res.json();
 
-        // Скрываем через 5 секунд.
-        setTimeout(() => {
-            successMsg.style.display = "none";
-        }, 5000);
-    } catch (e) {
-        alert("Не удалось отправить. Попробуй позже.");
+        if (data.success) {
+            successMsg.style.display = "block";
+            form.reset();
+            setTimeout(() => {
+                successMsg.style.display = "none";
+            }, 5000);
+        } else {
+            alert("Ошибка: " + (data.message || "не удалось отправить"));
+        }
+    } catch (err) {
+        alert("Не удалось отправить. Проверь интернет и попробуй позже.");
     }
 });
 
 // ============================================================
 //  ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ
 // ============================================================
-// (уже работает через scroll-behavior: smooth в CSS,
-// но на всякий случай — на старых браузерах)
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", (e) => {
