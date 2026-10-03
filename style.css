@@ -50,7 +50,6 @@ body {
     pointer-events: none;
 }
 
-/* Весь контент поверх фона */
 .hero, .section, .footer {
     position: relative;
     z-index: 1;
@@ -100,7 +99,6 @@ code {
     z-index: -1;
 }
 
-/* Верхнее меню */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -144,7 +142,6 @@ code {
     text-shadow: 0 0 15px var(--green-glow);
 }
 
-/* Основной контент hero */
 .hero-content {
     flex: 1;
     display: grid;
@@ -181,7 +178,6 @@ code {
     max-width: 520px;
 }
 
-/* Кнопки скачивания */
 .download-buttons {
     display: flex;
     gap: 16px;
@@ -237,7 +233,19 @@ code {
     box-shadow: 0 0 30px var(--blue-glow);
 }
 
-/* Счётчик скачиваний */
+/* Неактивные кнопки */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .download-counter {
     color: var(--text-dim);
     font-size: 14px;
@@ -265,7 +273,6 @@ code {
     font-family: 'Consolas', monospace;
 }
 
-/* Окно превью справа */
 .hero-preview {
     display: flex;
     justify-content: center;
@@ -463,7 +470,6 @@ code {
     object-fit: cover;
 }
 
-/* Если картинки нет — показываем placeholder */
 .screenshot.placeholder::after {
     content: "🖼 Скриншот скоро";
     position: absolute;
@@ -772,10 +778,6 @@ code {
     }
 
     .download-buttons {
-        justify-content: center;
-    }
-
-    .download-counter {
         justify-content: center;
     }
 
