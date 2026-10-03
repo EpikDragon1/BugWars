@@ -1,7 +1,6 @@
 // ============================================================
 //  МАТРИЦА НА ФОНЕ
 // ============================================================
-// Лёгкий эффект "падающих символов". Не тормозит.
 
 const canvas = document.getElementById("matrix-bg");
 const ctx = canvas.getContext("2d");
@@ -49,7 +48,6 @@ setInterval(drawMatrix, 50);
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("formSuccess");
 
-// Проверяем, что форма есть на странице, прежде чем вешать обработчик.
 if (form) {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
