@@ -40,44 +40,46 @@ function drawMatrix() {
 
 resizeMatrix();
 window.addEventListener("resize", resizeMatrix);
-setInterval(drawMatrix, 50);   // ~20 fps — не грузит
+setInterval(drawMatrix, 50);
 
 // ============================================================
 //  ФОРМА ОБРАТНОЙ СВЯЗИ (Web3Forms)
 // ============================================================
-// Web3Forms — бесплатный сервис, который принимает данные
-// с формы и отправляет их на email. Работает без сервера.
 
 const form = document.getElementById("contactForm");
 const successMsg = document.getElementById("formSuccess");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+// Проверяем, что форма есть на странице, прежде чем вешать обработчик.
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    const formData = new FormData(form);
+        const formData = new FormData(form);
 
-    try {
-        // Отправляем на сервер Web3Forms.
-        const res = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData,
-        });
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (data.success) {
-            successMsg.style.display = "block";
-            form.reset();
-            setTimeout(() => {
-                successMsg.style.display = "none";
-            }, 5000);
-        } else {
-            alert("Ошибка: " + (data.message || "не удалось отправить"));
+            if (data.success) {
+                if (successMsg) {
+                    successMsg.style.display = "block";
+                    setTimeout(() => {
+                        successMsg.style.display = "none";
+                    }, 5000);
+                }
+                form.reset();
+            } else {
+                alert("Ошибка: " + (data.message || "не удалось отправить"));
+            }
+        } catch (err) {
+            alert("Не удалось отправить. Проверь интернет и попробуй позже.");
         }
-    } catch (err) {
-        alert("Не удалось отправить. Проверь интернет и попробуй позже.");
-    }
-});
+    });
+}
 
 // ============================================================
 //  ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ
