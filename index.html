@@ -6,7 +6,6 @@
     <title>BugWars — Tower Defense в IT-стиле</title>
     <meta name="description" content="BugWars — игра в жанре Tower Defense про войну багов и фиксов. Скачай бесплатно для Windows.">
 
-    <!-- Open Graph — для красивых превью в Telegram, MAX, VK -->
     <meta property="og:title" content="BugWars — Tower Defense в IT-стиле">
     <meta property="og:description" content="Управляй багами и фиксами. Сноси сервер противника. Прокачивай карты.">
     <meta property="og:type" content="website">
@@ -16,15 +15,8 @@
 </head>
 <body>
 
-<!-- ============================================================
-     ФОНОВЫЙ ЭФФЕКТ — "матрица" из символов
-     Чисто декоративный, не мешает кликам
-     ============================================================ -->
 <canvas id="matrix-bg"></canvas>
 
-<!-- ============================================================
-     1. HERO — ШАПКА САЙТА
-     ============================================================ -->
 <section class="hero">
     <div class="hero-bg-glow"></div>
 
@@ -47,7 +39,6 @@
                 Баги, дебаггеры, апдейты, заклинания — всё против всех.
             </p>
 
-            <!-- Кнопки скачивания -->
             <div class="download-buttons">
                 <a href="download/BugWarsSetup.exe"
                    class="btn btn-primary"
@@ -65,7 +56,6 @@
                 </a>
             </div>
 
-            <!-- Счётчик скачиваний -->
             <div class="download-counter">
                 <span id="counterValue">—</span> скачиваний
             </div>
@@ -75,7 +65,6 @@
             </div>
         </div>
 
-        <!-- Правая часть — превью -->
         <div class="hero-preview">
             <div class="preview-window">
                 <div class="preview-bar">
@@ -90,15 +79,12 @@
     </div>
 </section>
 
-<!-- ============================================================
-     2. О ИГРЕ
-     ============================================================ -->
 <section id="about" class="section">
     <h2 class="section-title">О игре</h2>
     <div class="section-line"></div>
 
     <p class="section-text">
-        <strong>BugWars</strong> — это игра в жанре Tower Defense, где вместо башен — <span class="hl-blue">юниты-программы</span> и <span class="hl-green">энергия компиляции</span>.
+        <strong>BugWars</strong> — это игра в жанре Tower Defense, где вместо башен — <span class="hl-blue">юниты-программы</span>, а вместо эликсира — <span class="hl-green">энергия компиляции</span>.
         Ты играешь за одну из сторон вечной войны: <span class="hl-red">Баги</span> или <span class="hl-green">Фиксы</span>.
     </p>
 
@@ -107,7 +93,6 @@
         Твоя цель — снести <strong>Main Server</strong> противника, а он попытается снести твой.
     </p>
 
-    <!-- Карточки-фичи -->
     <div class="features">
         <div class="feature">
             <div class="feature-icon">🐛</div>
@@ -132,9 +117,6 @@
     </div>
 </section>
 
-<!-- ============================================================
-     3. СКРИНШОТЫ
-     ============================================================ -->
 <section id="screens" class="section">
     <h2 class="section-title">Скриншоты</h2>
     <div class="section-line"></div>
@@ -160,9 +142,6 @@
     <p class="screens-note">Скриншоты появятся после первой сборки игры.</p>
 </section>
 
-<!-- ============================================================
-     4. СИСТЕМНЫЕ ТРЕБОВАНИЯ
-     ============================================================ -->
 <section id="requirements" class="section">
     <h2 class="section-title">Системные требования</h2>
     <div class="section-line"></div>
@@ -193,9 +172,6 @@
     </div>
 </section>
 
-<!-- ============================================================
-     5. FAQ
-     ============================================================ -->
 <section id="faq" class="section">
     <h2 class="section-title">Частые вопросы</h2>
     <div class="section-line"></div>
@@ -238,14 +214,11 @@
 
         <details>
             <summary>Где следить за обновлениями?</summary>
-            <p>В Max: <a href="https://max.ru/join/9iR0m6rc8y0oHataBtsNw2VdyRTesTUYRHQd8f0gXAQ" target="_blank">Присоединиться</a>.</p>
+            <p>В Telegram: <a href="https://t.me/EpikDragon" target="_blank">@EpikDragon</a>.</p>
         </details>
     </div>
 </section>
 
-<!-- ============================================================
-     6. ФОРМА ОБРАТНОЙ СВЯЗИ
-     ============================================================ -->
 <section id="contact" class="section">
     <h2 class="section-title">Обратная связь</h2>
     <div class="section-line"></div>
@@ -254,11 +227,11 @@
         Нашёл баг? Есть идея? Просто хочешь написать? Жми.
     </p>
 
-    <!-- netlify — атрибут, который активирует Netlify Forms.
-         name и data-netlify обязательны. -->
-    <form name="contact" method="POST" data-netlify="true"
-          class="contact-form" id="contactForm">
-        <input type="hidden" name="form-name" value="contact">
+    <form class="contact-form" id="contactForm">
+        <input type="hidden" name="access_key" value="b78438d2-6100-4211-8e98-bb678c668eb1">
+        <input type="hidden" name="subject" value="BugWars — новое сообщение с сайта">
+        <input type="hidden" name="from_name" value="BugWars Сайт">
+        <input type="checkbox" name="botcheck" style="display: none;">
 
         <div class="form-row">
             <label>
@@ -279,16 +252,12 @@
 
         <button type="submit" class="btn btn-primary">📨 Отправить</button>
 
-        <!-- Сообщение после отправки -->
         <div id="formSuccess" class="form-success" style="display: none;">
             ✅ Спасибо! Сообщение отправлено. Я отвечу скоро.
         </div>
     </form>
 </section>
 
-<!-- ============================================================
-     7. ПОДВАЛ
-     ============================================================ -->
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
